@@ -1,0 +1,59 @@
+{
+  "name": "jettyn/bifrost",
+  "description": "Microservice de Directions",
+  "authors": [
+    {
+      "name": "Renato Teixeira Bueno",
+      "email": "renatotbueno@gmail.com"
+    },
+    {
+      "name": "Ricardo Marangoni da Mota",
+      "email": "ric.marangoni@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "jettyn/microservice-core": "dev-master",
+    "zendframework/zend-expressive": "~2.1.1",
+    "zendframework/zend-expressive-aurarouter": "^2.0",
+    "zendframework/zend-servicemanager": "^3.0",
+    "zendframework/zend-stdlib": "^3.1",
+    "zendframework/zend-config": "^3.1",
+    "psr/container": "^1.0",
+    "oscarotero/psr7-middlewares": "3.12.x",
+    "http-interop/http-middleware": "^0.4.1",
+    "filp/whoops": "^1.1",
+    "zircote/swagger-php": "^2.0",
+    "zfcampus/zf-console": "^1.3",
+    "jettyn/queuer": "dev-master",
+    "guzzlehttp/guzzle": "~6.0",
+    "nesbot/carbon": "~1.14",
+    "symfony/var-dumper": "~3.0",
+    "illuminate/support": "^5.2.0",
+    "tuupola/slim-jwt-auth": "^3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.0",
+    "behat/behat": "^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Direction\\": "project/src/Direction/"
+    }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "no-api":true,
+      "url": "git@bitbucket.com:jettyn/microservice-core.git"
+    },
+    {
+      "type": "vcs",
+      "no-api": true,
+      "url": "git@bitbucket.com:jettyn/queuer.git"
+    }
+  ],
+  "config": {
+    "bin-dir": "bin/"
+  }
+}

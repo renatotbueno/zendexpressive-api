@@ -1,0 +1,28 @@
+Direction\Domain\Entity\CityGeonameSkyscanner:
+    type: entity
+    table: city_geoname_skyscanner
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        geonameid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'geonameid da cidade'
+        skyscannerPlaceId:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+                comment: 'placeId do skyscanner'
+            column: skyscanner_place_id
+    lifecycleCallbacks: {  }

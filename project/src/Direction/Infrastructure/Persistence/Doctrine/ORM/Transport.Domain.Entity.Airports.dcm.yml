@@ -1,0 +1,66 @@
+Direction\Domain\Entity\Airports:
+    type: entity
+    table: airports
+    id:
+        airportId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: airport_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        geonameid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        airportName:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: airport_name
+        iata:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: true
+        active:
+            type: boolean
+            nullable: true
+        latitude:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        longitude:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+    manyToMany:
+        city:
+            targetEntity: Direction\Domain\Entity\City
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: airport
+            joinTable:
+                name: airport_nearby_city
+                joinColumns:
+                    -
+                        name: airport_id
+                        referencedColumnName: airport_id
+                inverseJoinColumns:
+                    -
+                        name: city_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

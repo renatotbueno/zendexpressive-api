@@ -1,0 +1,18 @@
+Direction\Domain\Entity\Rome2RioRouteVO:
+  type: entity
+  repositoryClass: Direction\Infrastructure\Persistence\Doctrine\Repository\Rome2RioRouteRepository
+  table: rome2rio_route
+  schema: schema_name # The schema the table lies in, for platforms that support schemas (Optional, >= 2.5)
+  readOnly: true
+  indexes:
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    origin_ciy_id:
+      type: integer
+  lifecycleCallbacks:
+    prePersist: [ doStuffOnPrePersist, doOtherStuffOnPrePersistToo ]
+    postPersist: [ doStuffOnPostPersist ]

@@ -1,0 +1,81 @@
+Direction\Domain\Entity\City:
+    type: entity
+    table: city
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        stateId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: state_id
+        geonameid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        name:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+        latitude:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        longitude:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        timezone:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+        population:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+    manyToMany:
+        airport:
+            targetEntity: Direction\Domain\Entity\Airports
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: city
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        bookingHotel:
+            targetEntity: Direction\Domain\Entity\BookingHotels
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: city
+            joinTable:
+                name: city_booking_hotel
+                joinColumns:
+                    -
+                        name: city_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: booking_hotel_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

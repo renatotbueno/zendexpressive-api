@@ -1,0 +1,122 @@
+Direction\Domain\Entity\User:
+    type: entity
+    table: user
+    indexes:
+        fk_user_city_idx:
+            columns:
+                - city_id
+        fk_user_type_trip_idx:
+            columns:
+                - trip_type_id
+    id:
+        userId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: user_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 155
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: false
+            length: 155
+            options:
+                fixed: false
+        password:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        birthDate:
+            type: date
+            nullable: true
+            column: birth_date
+        gender:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+        cityId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+                comment: "cidade de residencia\n"
+            column: city_id
+        facebookId:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: 'É uma conta logada com facebook?'
+            column: facebook_id
+        googleId:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: 'É uma conta logada com Google?'
+            column: google_id
+        yahooId:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: 'É uma conta logada com Yahoo?'
+            column: yahoo_id
+        microsoftId:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: microsoft_id
+        facebookCreatedAt:
+            type: datetime
+            nullable: true
+            column: facebook_created_at
+        googleCreatedAt:
+            type: datetime
+            nullable: true
+            column: google_created_at
+        yahooCreatedAt:
+            type: datetime
+            nullable: true
+            column: yahoo_created_at
+        microsoftCreatedAt:
+            type: datetime
+            nullable: true
+            column: microsoft_created_at
+        jettynCreatedAt:
+            type: datetime
+            nullable: true
+            column: jettyn_created_at
+        active:
+            type: boolean
+            nullable: true
+    manyToOne:
+        tripType:
+            targetEntity: Direction\Domain\Entity\TripType
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                trip_type_id:
+                    referencedColumnName: trip_type_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

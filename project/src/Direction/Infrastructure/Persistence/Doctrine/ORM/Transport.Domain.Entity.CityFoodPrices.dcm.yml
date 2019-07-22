@@ -1,0 +1,51 @@
+Direction\Domain\Entity\CityFoodPrices:
+    type: entity
+    table: city_food_prices
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        breakfastPrice:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: breakfast_price
+        lunchPrice:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: lunch_price
+        dinnerPrice:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: dinner_price
+        snackPrice:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: snack_price
+        costTrip:
+            type: string
+            nullable: false
+            length: 0
+            options:
+                fixed: false
+            column: cost_trip
+        cityId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: city_id
+    lifecycleCallbacks: {  }

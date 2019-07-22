@@ -1,0 +1,150 @@
+Direction\Domain\Entity\Rome2RioRouteSegment:
+    type: entity
+    table: rome2rio_route_segment
+    indexes:
+        rome2rio_route_id:
+            columns:
+                - rome2rio_route_id
+        city_id:
+            columns:
+                - city_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        cityId:
+            type: integer
+            column: city_id
+        segmentKind:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: segment_kind
+        distance:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+        duration:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        transferDuration:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: transfer_duration
+        path:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        price:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 4
+        currency:
+            type: string
+            nullable: true
+            length: 5
+            options:
+                fixed: false
+        depPlaceLat:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: dep_place_lat
+        depPlaceLng:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: dep_place_lng
+        depPlaceKind:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: dep_place_kind
+        depPlaceShortname:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: dep_place_shortname
+        arrPlaceLat:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: arr_place_lat
+        arrPlaceLng:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: arr_place_lng
+        arrPlaceKind:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: arr_place_kind
+        arrPlaceShortname:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: arr_place_shortname
+        vehicleKind:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: vehicle_kind
+        vehicleName:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: vehicle_name
+    manyToOne:
+        route:
+            targetEntity: Direction\Domain\Entity\Rome2RioRoute
+            cascade: {  }
+            fetch: LAZY
+            inversedBy: Rome2RioRoute
+            joinColumns:
+                rome2rio_route_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToMany:
+        agencies:
+            targetEntity: Direction\Domain\Entity\Rome2RioRouteSegmentAgency
+            cascade: ["persist", "merge", "remove"]
+            mappedBy: rome2RioRouteSegmentAgency
+    lifecycleCallbacks: {  }

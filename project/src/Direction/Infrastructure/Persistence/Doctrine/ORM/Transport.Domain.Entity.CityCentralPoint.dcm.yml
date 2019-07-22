@@ -1,0 +1,41 @@
+Direction\Domain\Entity\CityCentralPoint:
+    type: entity
+    table: city_central_point
+    indexes:
+        fk_city_central_point_city_id:
+            columns:
+                - city_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        latitude:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        longitude:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+    manyToOne:
+        city:
+            targetEntity: Direction\Domain\Entity\City
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                city_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

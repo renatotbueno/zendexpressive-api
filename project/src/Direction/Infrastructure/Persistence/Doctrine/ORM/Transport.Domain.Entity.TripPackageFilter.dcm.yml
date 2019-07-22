@@ -1,0 +1,49 @@
+Direction\Domain\Entity\TripPackageFilter:
+    type: entity
+    table: trip_package_filter
+    indexes:
+        fk_city_package:
+            columns:
+                - city_id
+    id:
+        id:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        tripCost:
+            type: string
+            nullable: true
+            length: 0
+            options:
+                fixed: false
+            column: trip_cost
+        tripTime:
+            type: string
+            nullable: true
+            length: 0
+            options:
+                fixed: false
+            column: trip_time
+        days:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '1'
+    manyToOne:
+        city:
+            targetEntity: Direction\Domain\Entity\City
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                city_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

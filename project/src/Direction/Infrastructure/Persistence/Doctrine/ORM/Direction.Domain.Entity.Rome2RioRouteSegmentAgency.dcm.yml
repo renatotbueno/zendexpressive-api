@@ -1,0 +1,85 @@
+Direction\Domain\Entity\Rome2RioRouteSegmentAgency:
+    type: entity
+    table: rome2rio_route_segment_agency
+    indexes:
+        rome2rio_route_segment_id:
+            columns:
+                - rome2rio_route_segment_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+        url:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        phone:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+        iconUrl:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: icon_url
+        frequency:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        duration:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        linkText:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: link_text
+        linkUrl:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: link_url
+        linkDisplayUrl:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: link_display_url
+    manyToOne:
+        segment:
+            targetEntity: Direction\Domain\Entity\Rome2rioRouteSegment
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: Rome2rioRouteSegment
+            joinColumns:
+                rome2rio_route_segment_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

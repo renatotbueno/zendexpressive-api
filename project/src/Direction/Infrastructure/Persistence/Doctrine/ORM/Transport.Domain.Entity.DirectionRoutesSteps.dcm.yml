@@ -1,0 +1,106 @@
+Direction\Domain\Entity\DirectionRoutesSteps:
+    type: entity
+    table: direction_routes_steps
+    indexes:
+        fk_tourist_spots_routes_steps_tourist_spots_routes1_idx:
+            columns:
+                - direction_routes_id
+        idx_tourist_spots_routes_steps_lang:
+            columns:
+                - language
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        language:
+            type: string
+            nullable: false
+            length: 5
+            options:
+                fixed: true
+        sequence:
+            type: boolean
+            nullable: false
+        distance:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        duration:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        startLatitude:
+            type: string
+            nullable: true
+            length: 155
+            options:
+                fixed: false
+            column: start_latitude
+        startLongitude:
+            type: string
+            nullable: true
+            length: 155
+            options:
+                fixed: false
+            column: start_longitude
+        endLatitude:
+            type: string
+            nullable: true
+            length: 155
+            options:
+                fixed: false
+            column: end_latitude
+        endLongitude:
+            type: string
+            nullable: true
+            length: 155
+            options:
+                fixed: false
+            column: end_longitude
+        htmlInstructions:
+            type: text
+            nullable: true
+            length: 16777215
+            options:
+                fixed: false
+            column: html_instructions
+        maneuver:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        travelMode:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: travel_mode
+        polylinePoints:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: polyline_points
+    manyToOne:
+        directionRoutes:
+            targetEntity: Direction\Domain\Entity\DirectionRoutes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                direction_routes_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

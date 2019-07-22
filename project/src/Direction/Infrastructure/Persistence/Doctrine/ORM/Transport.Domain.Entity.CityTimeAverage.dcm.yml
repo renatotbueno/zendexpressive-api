@@ -1,0 +1,34 @@
+Direction\Domain\Entity\CityTimeAverage:
+    type: entity
+    table: city_time_average
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        cityGeonameid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: city_geonameid
+        speedTrip:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+            column: speed_trip
+        costTrip:
+            type: boolean
+            nullable: false
+            column: cost_trip
+        days:
+            type: boolean
+            nullable: false
+    lifecycleCallbacks: {  }

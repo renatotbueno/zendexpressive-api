@@ -1,0 +1,86 @@
+Direction\Domain\Entity\Rome2RioRoute:
+    type: entity
+    table: rome2rio_route
+    repositoryClass: Direction\Infrastructure\Persistence\Doctrine\Repository\Rome2RioRouteRepository
+    indexes:
+        origin_city_id:
+            columns:
+                - origin_city_id
+        destination_city_id:
+            columns:
+                - destination_city_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        originCityId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: origin_city_id
+        destinationCityId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: destination_city_id
+        name:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+        distance:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+        totalDuration:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: total_duration
+        totalTransferDuration:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: total_transfer_duration
+        price:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 4
+        priceLow:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 4
+            column: price_low
+        priceHigh:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 4
+            column: price_high
+        currency:
+            type: string
+            nullable: true
+            length: 5
+            options:
+                fixed: false
+    oneToMany:
+        segments:
+            targetEntity: Direction\Domain\Entity\Rome2RioRouteSegment
+            cascade: ["persist", "merge", "remove"]
+            mappedBy: route
+    lifecycleCallbacks: {  }

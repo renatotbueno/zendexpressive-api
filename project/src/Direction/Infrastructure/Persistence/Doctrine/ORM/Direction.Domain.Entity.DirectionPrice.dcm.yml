@@ -1,0 +1,56 @@
+Direction\Domain\Entity\DirectionPrice:
+    type: entity
+    table: direction_price
+    repositoryClass: Direction\Infrastructure\Persistence\Doctrine\Repository\DirectionPriceRepository
+    indexes:
+        fk_transport_prices_city_id:
+            columns:
+                - city_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        type:
+            type: string
+            nullable: true
+            length: 155
+            options:
+                fixed: false
+                comment: "Tipo do transporte:\nSUBWAY\nBUS\nTRAM\nETC"
+        stops:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 'Quantidade de paradas'
+        duration:
+            type: time
+            nullable: true
+            options:
+                comment: "Duraçao do ticket\nEx: 1 hora, 1:30"
+        quantityTickets:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 'Por quantidade de passagens'
+            column: quantity_tickets
+        station:
+            type: string
+            nullable: true
+            length: 155
+            options:
+                fixed: false
+                comment: 'Nome da estação'
+        price:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+    lifecycleCallbacks: {  }

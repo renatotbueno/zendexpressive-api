@@ -1,0 +1,50 @@
+Direction\Domain\Entity\DirectionRoutesStepsTransitDetailsAgencies:
+    type: entity
+    table: direction_routes_steps_transit_details_agencies
+    indexes:
+        fk_agencies_direction_routes_steps_transit_details_id:
+            columns:
+                - direction_routes_steps_transit_details_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        agencyName:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+            column: agency_name
+        agencyUrl:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: agency_url
+        agencyPhone:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+            column: agency_phone
+    manyToOne:
+        directionRoutesStepsTransitDetails:
+            targetEntity: Direction\Domain\Entity\DirectionRoutesStepsTransitDetails
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                direction_routes_steps_transit_details_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

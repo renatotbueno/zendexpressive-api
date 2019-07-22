@@ -1,0 +1,184 @@
+Direction\Domain\Entity\DirectionRoutesStepsTransitDetails:
+    type: entity
+    table: direction_routes_steps_transit_details
+    indexes:
+        fk_direction_routes_steps_direction_routes_steps_transit_details:
+            columns:
+                - direction_routes_steps_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        arrivalName:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+            column: arrival_name
+        arrivalLatitude:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: arrival_latitude
+        arrivalLongitude:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: arrival_longitude
+        arrivalTimestamp:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+            column: arrival_timestamp
+        arrivalTimezone:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+            column: arrival_timezone
+        departureName:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+            column: departure_name
+        departureLatitude:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: departure_latitude
+        departureLongitude:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: departure_longitude
+        departureTimestamp:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+            column: departure_timestamp
+        departureTimezone:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+            column: departure_timezone
+        headsign:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+        headway:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        numStops:
+            type: boolean
+            nullable: true
+            column: num_stops
+        lineName:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: line_name
+        lineShortName:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: line_short_name
+        lineColor:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: line_color
+        lineUrl:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: line_url
+        lineIcon:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: line_icon
+        lineTextColor:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: line_text_color
+        vehicleName:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: vehicle_name
+        vehicleType:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: vehicle_type
+        vehicleIcon:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: vehicle_icon
+        vehicleLocalIcon:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: vehicle_local_icon
+    manyToOne:
+        directionRoutesSteps:
+            targetEntity: Direction\Domain\Entity\DirectionRoutesSteps
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                direction_routes_steps_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

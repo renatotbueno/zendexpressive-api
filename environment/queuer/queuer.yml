@@ -1,0 +1,22 @@
+queuer:
+  app-console: /var/www/direction-api/latest/bin/console
+  max-queue-processes: 5
+  topic-list-refresh: 60
+
+queue:
+  type: sqs
+  prefix-topic: transport
+  prefix-exclude: "dead-queue"
+  config:
+    version: "latest"
+    region: "sa-east-1"
+    key: 
+    secret: 
+
+logger:
+  type: bugsnag
+  config:
+    key: 
+    release-stage: prod
+    notify-release-stages: [prod]
+    channel: transport

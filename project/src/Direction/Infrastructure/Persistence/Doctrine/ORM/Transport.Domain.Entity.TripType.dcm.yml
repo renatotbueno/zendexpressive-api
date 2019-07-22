@@ -1,0 +1,21 @@
+Direction\Domain\Entity\TripType:
+    type: entity
+    table: trip_type
+    id:
+        tripTypeId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: trip_type_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        description:
+            type: string
+            nullable: true
+            length: 155
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

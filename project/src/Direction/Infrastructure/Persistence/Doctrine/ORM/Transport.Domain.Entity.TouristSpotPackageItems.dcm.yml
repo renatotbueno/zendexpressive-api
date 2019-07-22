@@ -1,0 +1,41 @@
+Direction\Domain\Entity\TouristSpotPackageItems:
+    type: entity
+    table: tourist_spot_package_items
+    indexes:
+        fk_tourist_spot_package_prices:
+            columns:
+                - tourist_spot_package_price_id
+        fk_tourist_spots:
+            columns:
+                - tourist_spot_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        touristSpotPackagePrice:
+            targetEntity: Direction\Domain\Entity\TouristSpotPackagePrices
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tourist_spot_package_price_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        touristSpot:
+            targetEntity: Direction\Domain\Entity\TouristSpots
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tourist_spot_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

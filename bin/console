@@ -1,0 +1,38 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__.'/../vendor/autoload.php';
+
+set_time_limit(0);
+
+use Zend\Console\Console;
+use ZF\Console\Application;
+
+$dotenv = new \Dotenv\Dotenv(__DIR__ . '/../');
+if (getenv('APPLICATION_ENV') === 'test') {
+    $dotenv->load();
+} else {
+    $dotenv->overload();
+}
+
+$consoles  = require __DIR__ . '/../config/autoload/console.global.php';
+
+/** @var \Interop\Container\ContainerInterface $container */
+$container = require __DIR__ .'/../config/container.php';
+
+$routes = array_map(
+	function($console) use ($container) {
+	    $consoleInstance = new $console($container);
+	    return $consoleInstance->getConfiguration();
+	},
+	$consoles
+);
+
+$application = new Application(
+	'Direction Console Application',
+	'0.0.1',
+	$routes,
+	Console::getInstance()
+);
+
+exit($application->run());

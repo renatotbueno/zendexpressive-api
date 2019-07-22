@@ -1,0 +1,54 @@
+Direction\Domain\Entity\TripPackageFilterItems:
+    type: entity
+    table: trip_package_filter_items
+    indexes:
+        fk_trip_package_filter_trip_package_filter:
+            columns:
+                - trip_package_filter_id
+        fk_tourist_spots_trip_package_filter:
+            columns:
+                - tourist_spot_id
+    id:
+        id:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        day:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 'Primeiro dia, segundo dia, terceiro dia'
+        order:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: 'Primeiro do dia, segundo do dia, terceiro do dia, etc'
+    manyToOne:
+        touristSpot:
+            targetEntity: Direction\Domain\Entity\TouristSpots
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tourist_spot_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tripPackageFilter:
+            targetEntity: Direction\Domain\Entity\TripPackageFilter
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                trip_package_filter_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

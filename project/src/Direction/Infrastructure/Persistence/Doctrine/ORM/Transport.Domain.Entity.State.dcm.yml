@@ -1,0 +1,43 @@
+Direction\Domain\Entity\State:
+    type: entity
+    table: state
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        countryId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: country_id
+        geonameid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        name:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        latitude:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        longitude:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

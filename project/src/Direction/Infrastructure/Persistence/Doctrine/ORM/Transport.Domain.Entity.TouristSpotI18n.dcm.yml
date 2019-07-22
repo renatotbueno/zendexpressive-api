@@ -1,0 +1,53 @@
+Direction\Domain\Entity\TouristSpotI18n:
+    type: entity
+    table: tourist_spot_i18n
+    indexes:
+        tourist_spot_id:
+            columns:
+                - tourist_spot_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        language:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+        name:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        slug:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        description:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+    manyToOne:
+        touristSpot:
+            targetEntity: Direction\Domain\Entity\TouristSpots
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tourist_spot_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

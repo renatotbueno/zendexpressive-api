@@ -1,0 +1,22 @@
+queuer:
+  app-console: /var/www/html/jettyn/direction-api/bin/console
+  max-queue-processes: 10
+  topic-list-refresh: 60
+
+queue:
+  type: sqs
+  prefix-topic: dev-direction-
+  prefix-exclude: "dead-queue"
+  config:
+    version: "latest"
+    region: "sa-east-1"
+    key:
+    secret:
+
+logger:
+  type: bugsnag
+  config:
+    key:
+    release-stage: dev
+    notify-release-stages: [prod, dev]
+    channel: transport

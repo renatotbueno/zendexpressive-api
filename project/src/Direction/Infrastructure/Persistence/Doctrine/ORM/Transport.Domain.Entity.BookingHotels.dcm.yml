@@ -1,0 +1,277 @@
+Direction\Domain\Entity\BookingHotels:
+    type: entity
+    table: booking_hotels
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        address:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        zip:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        cityHotel:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: city_hotel
+        cc1:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        ufi:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        class:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        currencycode:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        minrate:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        maxrate:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        preferred:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        nrRooms:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: nr_rooms
+        longitude:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        latitude:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        publicRanking:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: public_ranking
+        hotelUrl:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: hotel_url
+        photoUrl:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: photo_url
+        descEn:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: desc_en
+        descFr:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: desc_fr
+        descEs:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: desc_es
+        descDe:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: desc_de
+        descNl:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: desc_nl
+        descIt:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: desc_it
+        descPt:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: desc_pt
+        descJa:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: desc_ja
+        descZh:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: desc_zh
+        descPl:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: desc_pl
+        descRu:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: desc_ru
+        descSv:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: desc_sv
+        descAr:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: desc_ar
+        descEl:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: desc_el
+        descNo:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: desc_no
+        cityUnique:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: city_unique
+        cityPreferred:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: city_preferred
+        continentId:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: continent_id
+        reviewScore:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: review_score
+        reviewNr:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: review_nr
+        lastColumn:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: last_column
+    manyToMany:
+        city:
+            targetEntity: Direction\Domain\Entity\City
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: bookingHotel
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

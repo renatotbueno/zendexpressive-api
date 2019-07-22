@@ -1,0 +1,47 @@
+Direction\Domain\Entity\CitiesNearbyCity:
+    type: entity
+    table: cities_nearby_city
+    indexes:
+        city_id:
+            columns:
+                - city_id
+        nearby_city_id:
+            columns:
+                - nearby_city_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        distance:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+    manyToOne:
+        city:
+            targetEntity: Direction\Domain\Entity\City
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                city_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        nearbyCity:
+            targetEntity: Direction\Domain\Entity\City
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                nearby_city_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
