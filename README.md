@@ -106,20 +106,16 @@ Tirando isso você pode desenvolver da forma que preferir :)
 ## Descrição Infraestrutura:
 
 ### RDS
- - portal-database.madeiramadeira.com.br
- - portal-ro.madeiramadeira.com.br
 
 ### EC2
  - máquina produção auto-scaling (c4.large)
  
 ### Redis
- - rd-portal.madeiramadeira.com.br
 
 ### SQS
  - https://sqs.sa-east-1.amazonaws.com/683720833731/
  
 ### ELK
- - search-portais-ribfzndfjtohchs2hczzfyx76a.sa-east-1.es.amazonaws.com
 
 ### Modulos PHP
  - bz2
